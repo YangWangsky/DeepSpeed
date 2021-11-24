@@ -149,10 +149,10 @@ class SparseSelfAttention(nn.Module):
         scaling = float(head_dim)**-0.5
 
         # attention scores
-        attn_output_weights = sparse_dot_sdd_nt(query, key)
+        attn_output_weights = sparse_dot_sdd_nt(query * scaling, key)
         attn_output_weights = sparse_softmax(
             attn_output_weights,
-            scale=scaling,
+            scale=1,
             rpe=rpe,
             key_padding_mask=key_padding_mask,
             attn_mask=attn_mask,

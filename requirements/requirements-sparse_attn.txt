@@ -1,1 +1,1 @@
-triton
+triton==0.4.2
